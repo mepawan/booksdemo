@@ -2,13 +2,6 @@
 import { PrismaClient, Book } from "@prisma/client";
 
 
-type PageProps = {
-    searchParams: { 
-      genre?: string | '', 
-      sort?: string | '' 
-    }
-  }
-
 const prisma = new PrismaClient();
 
 export default async function Books({
