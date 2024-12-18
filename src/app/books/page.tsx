@@ -5,7 +5,7 @@ import BookFilters  from './filters'
 type PageProps = {
     searchParams: { 
       genre?: string | '', 
-      sort?: 'asc' | 'desc' 
+      sort?: string | '' 
     }
   }
 
