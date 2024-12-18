@@ -1,18 +1,17 @@
 
 import { PrismaClient, Book } from "@prisma/client";
 import BookFilters  from './filters'
+
+type PageProps = {
+    searchParams: { 
+      genre?: string, 
+      sort?: 'asc' | 'desc' 
+    }
+  }
+
 const prisma = new PrismaClient();
 
-export default async function books (
-    {
-        searchParams
-      }: {
-        searchParams: { 
-          genre?: string, 
-          sort?: 'asc' | 'desc' 
-        }
-      }
-){
+export default async function books ({ searchParams }: PageProps){
     
     const genre = searchParams.genre ? String(searchParams.genre) : '';
     const sort = searchParams.sort === "asc" || searchParams.sort === "desc" ? searchParams.sort : 'asc';
