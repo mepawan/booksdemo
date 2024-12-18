@@ -3,10 +3,13 @@ import { PrismaClient, Book } from "@prisma/client";
 import BookFilters  from './filters'
 
 const prisma = new PrismaClient();
-type SearchParams = Record<string, string | string[] | undefined>;
+//type SearchParams = Record<string, string | string[] | undefined>;
 
+interface PageProps {
+    searchParams: Record<string, string | string[] | undefined>;
+  }
 
-export default async function Books({ searchParams }: { searchParams: SearchParams }) {
+export default async function Books({ searchParams }: PageProps) {
     
     const genre = typeof searchParams['genre'] === 'string' && searchParams['genre'] !== ''  ? searchParams['genre'] : undefined;
     const sort = typeof searchParams['sort'] === 'string' && searchParams['sort'] == 'desc'  ? 'desc' : 'asc';
@@ -44,3 +47,4 @@ export default async function Books({ searchParams }: { searchParams: SearchPara
     )
 }
 export const dynamic = 'force-dynamic'
+export const dynamicParams = true;
