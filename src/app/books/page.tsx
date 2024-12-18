@@ -3,8 +3,6 @@ import { PrismaClient, Book } from "@prisma/client";
 import BookFilters  from './filters'
 
 const prisma = new PrismaClient();
-//type SearchParams = Record<string, string | string[] | undefined>;
-
 interface PageProps {
     searchParams: Record<string, string | string[] | undefined>;
   }
